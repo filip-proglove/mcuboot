@@ -156,15 +156,15 @@ void main(void)
 
     os_heap_init();
 
-#if (!defined(CONFIG_XTENSA) && defined(DT_FLASH_DEV_NAME))
-    if (!flash_device_get_binding(DT_FLASH_DEV_NAME)) {
-        BOOT_LOG_ERR("Flash device %s not found", DT_FLASH_DEV_NAME);
+#if (!defined(CONFIG_XTENSA) && defined(FLASH_DEV_NAME))
+    if (!flash_device_get_binding(FLASH_DEV_NAME)) {
+        BOOT_LOG_ERR("Flash device %s not found", FLASH_DEV_NAME);
         while (1)
             ;
     }
-#elif (defined(CONFIG_XTENSA) && defined(DT_SPI_NOR_DRV_NAME))
-    if (!flash_device_get_binding(DT_SPI_NOR_DRV_NAME)) {
-        BOOT_LOG_ERR("Flash device %s not found", DT_SPI_NOR_DRV_NAME);
+#elif (defined(CONFIG_XTENSA) && defined(CONFIG_SPI_FLASH_W25QXXDV_DRV_NAME))
+    if (!flash_device_get_binding(CONFIG_SPI_FLASH_W25QXXDV_DRV_NAME)) {
+        BOOT_LOG_ERR("Flash device %s not found", CONFIG_SPI_FLASH_W25QXXDV_DRV_NAME);
         while (1)
             ;
     }
